@@ -7,13 +7,15 @@ import "../src/mocks/MockPriceOracle.sol";
 contract PriceOracleTest is Test {
     MockPriceOracle oracle;
 
+    bytes32 ETH = bytes32("ETH");
+
     function setUp() public {
         oracle = new MockPriceOracle();
-        oracle.setMockValue(1400e8);
+        oracle.setMockValue(1600e8);
     }
 
     function testGetLatestEthPrice() public view {
-        uint256 ethPrice = oracle.getLatestEthPrice();
+        uint256 ethPrice = oracle.getLatestPrice(ETH);
         console.log(ethPrice);
         assertGt(ethPrice, 0);
     }
