@@ -2,9 +2,6 @@
 pragma solidity ^0.8.28;
 
 /**
- * @title Errors library
- * @author Krono Finance (forked from Aave)
- * @notice Defines the error messages emitted by the different contracts of the Krono Finance protocol
  * @dev Error messages prefix glossary:
  *  - VL = ValidationLogic
  *  - MATH = Math libraries

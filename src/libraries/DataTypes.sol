@@ -1,10 +1,6 @@
 // SPDX-License-Identifier: agpl-3.0
 pragma solidity ^0.8.28;
 
-/**
- * @title DataTypes library
- * @notice Defines the data structures used in the Krono lending protocol
- */
 library DataTypes {
     // Reserve data structure
     struct ReserveData {
