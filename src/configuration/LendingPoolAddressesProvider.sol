@@ -22,7 +22,7 @@ contract LendingPoolAddressesProvider is Ownable, ILendingPoolAddressesProvider 
     }
 
     /**
-     * @dev Returns the id of the Aave market to which this contracts points to
+     * @dev Returns the id of the Krono market to which this contracts points to
      * @return The market id
      **/
     function getMarketId() external view override returns (string memory) {
