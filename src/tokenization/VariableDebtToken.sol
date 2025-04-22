@@ -19,8 +19,8 @@ contract VariableDebtToken is DebtTokenBase, IVariableDebtToken {
 
     /**
      * @dev Initializes the debt token.
-     * @param pool The address of the lending pool where this aToken will be used
-     * @param underlyingAsset The address of the underlying asset of this aToken (E.g. WETH for aWETH)
+     * @param pool The address of the lending pool where this kToken will be used
+     * @param underlyingAsset The address of the underlying asset of this kToken (E.g. WETH for aWETH)
      * @param incentivesController The smart contract managing potential incentives distribution
      * @param debtTokenDecimals The decimals of the debtToken, same as the underlying asset's
      * @param debtTokenName The name of the token
@@ -162,7 +162,7 @@ contract VariableDebtToken is DebtTokenBase, IVariableDebtToken {
     }
 
     /**
-     * @dev Returns the address of the underlying asset of this aToken (E.g. WETH for aWETH)
+     * @dev Returns the address of the underlying asset of this kToken (E.g. WETH for aWETH)
      **/
     function UNDERLYING_ASSET_ADDRESS() public view returns (address) {
         return _underlyingAsset;
@@ -176,7 +176,7 @@ contract VariableDebtToken is DebtTokenBase, IVariableDebtToken {
     }
 
     /**
-     * @dev Returns the address of the lending pool where this aToken is used
+     * @dev Returns the address of the lending pool where this kToken is used
      **/
     function POOL() public view returns (ILendingPool) {
         return _pool;
