@@ -50,6 +50,8 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
     using ReserveConfiguration for DataTypes.ReserveConfigurationMap;
     using UserConfiguration for DataTypes.UserConfigurationMap;
 
+    uint256 public constant LENDINGPOOL_REVISION = 0x1;
+
     modifier whenNotPaused() {
         _whenNotPaused();
         _;
@@ -69,6 +71,10 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
             _addressesProvider.getLendingPoolConfigurator() == msg.sender,
             Errors.LP_CALLER_NOT_LENDING_POOL_CONFIGURATOR
         );
+    }
+
+    function getRevision() internal pure override returns (uint256) {
+        return LENDINGPOOL_REVISION;
     }
 
     /**
