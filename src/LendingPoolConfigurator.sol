@@ -57,7 +57,7 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
     }
 
     function _initReserve(ILendingPool lendingPool, InitReserveInput calldata input) internal {
-        address aTokenProxyAddress = _initTokenWithProxy(
+        address kTokenProxyAddress = _initTokenWithProxy(
             input.kTokenImpl,
             abi.encodeWithSelector(
                 IInitializableKToken.initialize.selector,
@@ -102,7 +102,7 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
 
         pool.initReserve(
             input.underlyingAsset,
-            aTokenProxyAddress,
+            kTokenProxyAddress,
             stableDebtTokenProxyAddress,
             variableDebtTokenProxyAddress,
             input.interestRateStrategyAddress
@@ -121,7 +121,7 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
 
         emit ReserveInitialized(
             input.underlyingAsset,
-            aTokenProxyAddress,
+            kTokenProxyAddress,
             stableDebtTokenProxyAddress,
             variableDebtTokenProxyAddress,
             input.interestRateStrategyAddress
@@ -129,9 +129,9 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
     }
 
     /**
-     * @dev Updates the aToken implementation for the reserve
+     * @dev Updates the kToken implementation for the reserve
      **/
-    function updateAToken(UpdateKTokenInput calldata input) external onlyPoolAdmin {
+    function updateKToken(UpdateKTokenInput calldata input) external onlyPoolAdmin {
         ILendingPool cachedPool = pool;
 
         DataTypes.ReserveData memory reserveData = cachedPool.getReserveData(input.asset);
@@ -425,7 +425,7 @@ contract LendingPoolConfigurator is VersionedInitializable, ILendingPoolConfigur
     }
 
     /**
-     * @dev pauses or unpauses all the actions of the protocol, including aToken transfers
+     * @dev pauses or unpauses all the actions of the protocol, including kToken transfers
      * @param val true if protocol needs to be paused, false otherwise
      **/
     function setPoolPause(bool val) external onlyEmergencyAdmin {

@@ -464,7 +464,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
         address oracle;
         uint256 i;
         address currentAsset;
-        address currentATokenAddress;
+        address currentKTokenAddress;
         uint256 currentAmount;
         uint256 currentPremium;
         uint256 currentAmountPlusPremium;
@@ -523,25 +523,25 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
             vars.currentAsset = assets[vars.i];
             vars.currentAmount = amounts[vars.i];
             vars.currentPremium = premiums[vars.i];
-            vars.currentATokenAddress = kTokenAddresses[vars.i];
+            vars.currentKTokenAddress = kTokenAddresses[vars.i];
             vars.currentAmountPlusPremium = vars.currentAmount + vars.currentPremium;
 
             if (DataTypes.InterestRateMode(modes[vars.i]) == DataTypes.InterestRateMode.NONE) {
                 _reserves[vars.currentAsset].updateState();
                 _reserves[vars.currentAsset].cumulateToLiquidityIndex(
-                    IERC20(vars.currentATokenAddress).totalSupply(),
+                    IERC20(vars.currentKTokenAddress).totalSupply(),
                     vars.currentPremium
                 );
                 _reserves[vars.currentAsset].updateInterestRates(
                     vars.currentAsset,
-                    vars.currentATokenAddress,
+                    vars.currentKTokenAddress,
                     vars.currentAmountPlusPremium,
                     0
                 );
 
                 IERC20(vars.currentAsset).safeTransferFrom(
                     receiverAddress,
-                    vars.currentATokenAddress,
+                    vars.currentKTokenAddress,
                     vars.currentAmountPlusPremium
                 );
             } else {
@@ -554,7 +554,7 @@ contract LendingPool is VersionedInitializable, ILendingPool, LendingPoolStorage
                         onBehalfOf,
                         vars.currentAmount,
                         modes[vars.i],
-                        vars.currentATokenAddress,
+                        vars.currentKTokenAddress,
                         referralCode,
                         false
                     )
