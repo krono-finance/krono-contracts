@@ -15,4 +15,8 @@ contract MockPriceOracle is PriceOracle {
     ) internal view override returns (uint256) {
         return mockValue;
     }
+
+    function getAssetPrice(address asset) public view override returns (uint256) {
+        return mockValue;
+    }
 }
