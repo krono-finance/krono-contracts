@@ -22,19 +22,19 @@ contract DeployLendingPool is Script {
 
         // Deploy Core Contracts
         // 1. LendingPoolAddressesProvider
-        // 2. LendingPoolConfigurator
-        // 3. LendingPoolCollateralManager
-        // 4. LendingPool
+        // 2. LendingPool
+        // 3. LendingPoolConfigurator
+        // 4. LendingPoolCollateralManager
         LendingPoolAddressesProvider addressesProvider = new LendingPoolAddressesProvider(marketId);
+        LendingPool lendingPool = new LendingPool();
         LendingPoolConfigurator configurator = new LendingPoolConfigurator();
         LendingPoolCollateralManager collateralManager = new LendingPoolCollateralManager();
-        LendingPool lendingPool = new LendingPool();
 
         // Set Implementations
         // This include initializing the contract implementation by LendingPoolAddressesProvider
+        addressesProvider.setLendingPoolImpl(address(lendingPool));
         addressesProvider.setLendingPoolConfiguratorImpl(address(configurator));
         addressesProvider.setLendingPoolCollateralManager(address(collateralManager));
-        addressesProvider.setLendingPoolImpl(address(lendingPool));
 
         // Set Admins
         addressesProvider.setPoolAdmin(deployer);
@@ -42,12 +42,12 @@ contract DeployLendingPool is Script {
 
         // Log deployed contract addresses
         console.log("LendingPoolAddressesProvider:", address(addressesProvider));
+        console.log("LendingPoolImpl:", address(lendingPool));
         console.log("LendingPoolConfiguratorImpl:", address(configurator));
         console.log("LendingPoolCollateralManagerImpl:", address(collateralManager));
-        console.log("LendingPoolImpl:", address(lendingPool));
+        console.log("LendingPoolProxy:", addressesProvider.getLendingPool());
         console.log("LendingPoolConfiguratorProxy:", addressesProvider.getLendingPoolConfigurator()); // prettier-ignore
         console.log("LendingPoolCollateralManagerProxy:", addressesProvider.getLendingPoolCollateralManager()); // prettier-ignore
-        console.log("LendingPoolProxy:", addressesProvider.getLendingPool());
 
         vm.stopBroadcast();
     }
