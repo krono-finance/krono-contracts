@@ -11,7 +11,7 @@ contract DeployOracle is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
 
         LendingPoolAddressesProvider addressesProvider = LendingPoolAddressesProvider(
-            0xDB573BeF789dd06FC4b89B9Ac2F79430b6677d48
+            0x35C6f8D689527EaF42c6911BDc9B1Ba209Bb3C0b
         );
 
         // Start Deployments

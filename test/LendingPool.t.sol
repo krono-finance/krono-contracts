@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0
 pragma solidity ^0.8.28;
 
-import {Test, console} from "forge-std/Test.sol";
+import {Test, console} from "../lib/forge-std/src/Test.sol";
 import "../src/LendingPool.sol";
 import "../src/LendingPoolConfigurator.sol";
 import "../src/LendingPoolCollateralManager.sol";
