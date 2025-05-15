@@ -60,6 +60,7 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
             DataTypes.ReserveData memory baseData = lendingPool.getReserveData(
                 reserveData.underlyingAsset
             );
+
             reserveData.liquidityIndex = baseData.liquidityIndex;
             reserveData.variableBorrowIndex = baseData.variableBorrowIndex;
             reserveData.liquidityRate = baseData.currentLiquidityRate;
@@ -87,9 +88,8 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
 
             // reserve configuration
 
-            // we're getting this info from the aToken, because some of assets can be not compliant with ETC20Detailed
             reserveData.symbol = IERC20Detailed(reserveData.underlyingAsset).symbol();
-            reserveData.name = "";
+            reserveData.name = IERC20Detailed(reserveData.underlyingAsset).name();
 
             (
                 reserveData.baseLTVasCollateral,
