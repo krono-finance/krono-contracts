@@ -5,7 +5,7 @@ import {IERC20Detailed} from "../dependencies/openzeppelin/contracts/IERC20Detai
 import {ILendingPoolAddressesProvider} from "../interfaces/ILendingPoolAddressesProvider.sol";
 import {IUiPoolDataProvider} from "./interfaces/IUiPoolDataProvider.sol";
 import {ILendingPool} from "../interfaces/ILendingPool.sol";
-import {MockPriceOracle} from "../mocks/MockPriceOracle.sol";
+import {PriceOracle} from "../PriceOracle.sol";
 import {IKToken} from "../interfaces/IKToken.sol";
 import {IVariableDebtToken} from "../interfaces/IVariableDebtToken.sol";
 import {IStableDebtToken} from "../interfaces/IStableDebtToken.sol";
@@ -20,10 +20,10 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
     using ReserveConfiguration for DataTypes.ReserveConfigurationMap;
     using UserConfiguration for DataTypes.UserConfigurationMap;
 
-    address public constant MOCK_USDC_ADDRESS = 0xddb0c6b66Cf2BaCB6FB835a74c33be8ad728e596;
-    MockPriceOracle public immutable oracle;
+    address public constant USDC_ADDRESS = 0xF242275d3a6527d877f2c927a82D9b057609cc71;
+    PriceOracle public immutable oracle;
 
-    constructor(MockPriceOracle _oracle) {
+    constructor(PriceOracle _oracle) {
         oracle = _oracle;
     }
 
@@ -115,7 +115,7 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
             );
         }
 
-        return (reservesData, oracle.getAssetPrice(MOCK_USDC_ADDRESS));
+        return (reservesData, oracle.getAssetPrice(USDC_ADDRESS));
     }
 
     function getUserReservesData(
@@ -267,6 +267,6 @@ contract UiPoolDataProvider is IUiPoolDataProvider {
             }
         }
 
-        return (reservesData, userReservesData, oracle.getAssetPrice(MOCK_USDC_ADDRESS));
+        return (reservesData, userReservesData, oracle.getAssetPrice(USDC_ADDRESS));
     }
 }
