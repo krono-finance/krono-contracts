@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-import {Script, console} from "../lib/forge-std/src/Script.sol";
-import {MockPriceOracle} from "../src/mocks/MockPriceOracle.sol";
-import {LendingRateOracle} from "../src/mocks/LendingRateOracle.sol";
-import {LendingPoolAddressesProvider} from "../src/configuration/LendingPoolAddressesProvider.sol";
+import {Script, console} from "../../lib/forge-std/src/Script.sol";
+import {MockPriceOracle} from "../../src/mocks/MockPriceOracle.sol";
+import {LendingRateOracle} from "../../src/mocks/LendingRateOracle.sol";
+import {LendingPoolAddressesProvider} from "../../src/configuration/LendingPoolAddressesProvider.sol";
 
 contract DeployOracle is Script {
     function run() external {

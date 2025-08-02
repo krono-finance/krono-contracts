@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-import {Script, console} from "../lib/forge-std/src/Script.sol";
-import {LendingPoolAddressesProvider} from "../src/configuration/LendingPoolAddressesProvider.sol";
-import {UiPoolDataProvider} from "../src/misc/UiPoolDataProvider.sol";
-import {WalletBalanceProvider} from "../src/misc/WalletBalanceProvider.sol";
-import {MockPriceOracle} from "../src/mocks/MockPriceOracle.sol";
+import {Script, console} from "../../lib/forge-std/src/Script.sol";
+import {LendingPoolAddressesProvider} from "../../src/configuration/LendingPoolAddressesProvider.sol";
+import {UiPoolDataProvider} from "../../src/misc/UiPoolDataProvider.sol";
+import {WalletBalanceProvider} from "../../src/misc/WalletBalanceProvider.sol";
+import {MockPriceOracle} from "../../src/mocks/MockPriceOracle.sol";
 
 contract DeployUiDataProvider is Script {
     function run() external {

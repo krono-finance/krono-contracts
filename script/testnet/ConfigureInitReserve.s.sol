@@ -1,17 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-import {Script, console} from "../lib/forge-std/src/Script.sol";
-import {KToken} from "../src/tokenization/KToken.sol";
-import {VariableDebtToken} from "../src/tokenization/VariableDebtToken.sol";
-import {StableDebtToken} from "../src/tokenization/StableDebtToken.sol";
-import {ERC20} from "../src/dependencies/openzeppelin/contracts/ERC20.sol";
-import {DefaultReserveInterestRateStrategy} from "../src/DefaultReserveInterestRateStrategy.sol";
-import {LendingPoolAddressesProvider} from "../src/configuration/LendingPoolAddressesProvider.sol";
-import {LendingPoolConfigurator} from "../src/LendingPoolConfigurator.sol";
-import {LendingRateOracle} from "../src/mocks/LendingRateOracle.sol";
-import {ILendingPoolConfigurator} from "../src/interfaces/ILendingPoolConfigurator.sol";
-import {ILendingPool} from "../src/interfaces/ILendingPool.sol";
+import {Script, console} from "../../lib/forge-std/src/Script.sol";
+import {KToken} from "../../src/tokenization/KToken.sol";
+import {VariableDebtToken} from "../../src/tokenization/VariableDebtToken.sol";
+import {StableDebtToken} from "../../src/tokenization/StableDebtToken.sol";
+import {ERC20} from "../../src/dependencies/openzeppelin/contracts/ERC20.sol";
+import {DefaultReserveInterestRateStrategy} from "../../src/DefaultReserveInterestRateStrategy.sol";
+import {LendingPoolAddressesProvider} from "../../src/configuration/LendingPoolAddressesProvider.sol";
+import {LendingPoolConfigurator} from "../../src/LendingPoolConfigurator.sol";
+import {LendingRateOracle} from "../../src/mocks/LendingRateOracle.sol";
+import {ILendingPoolConfigurator} from "../../src/interfaces/ILendingPoolConfigurator.sol";
+import {ILendingPool} from "../../src/interfaces/ILendingPool.sol";
 
 contract DeployConfigureInitReserve is Script {
     function run() external {

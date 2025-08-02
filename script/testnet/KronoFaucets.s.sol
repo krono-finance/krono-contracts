@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-import {Script, console} from "../lib/forge-std/src/Script.sol";
-import {KronoFaucets} from "../src/misc/KronoFaucets.sol";
+import {Script, console} from "../../lib/forge-std/src/Script.sol";
+import {KronoFaucets} from "../../src/misc/KronoFaucets.sol";
 
 contract DeployKronoFaucets is Script {
     function run() external {

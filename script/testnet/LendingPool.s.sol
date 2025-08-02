@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-import {Script, console} from "../lib/forge-std/src/Script.sol";
-import {LendingPoolAddressesProvider} from "../src/configuration/LendingPoolAddressesProvider.sol";
-import {LendingPoolConfigurator} from "../src/LendingPoolConfigurator.sol";
-import {LendingPoolCollateralManager} from "../src/LendingPoolCollateralManager.sol";
-import {LendingPool} from "../src/LendingPool.sol";
+import {Script, console} from "../../lib/forge-std/src/Script.sol";
+import {LendingPoolAddressesProvider} from "../../src/configuration/LendingPoolAddressesProvider.sol";
+import {LendingPoolConfigurator} from "../../src/LendingPoolConfigurator.sol";
+import {LendingPoolCollateralManager} from "../../src/LendingPoolCollateralManager.sol";
+import {LendingPool} from "../../src/LendingPool.sol";
 
 contract DeployLendingPool is Script {
     function run() external {

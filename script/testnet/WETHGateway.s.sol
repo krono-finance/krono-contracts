@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
-import {Script, console} from "../lib/forge-std/src/Script.sol";
-import {LendingPoolAddressesProvider} from "../src/configuration/LendingPoolAddressesProvider.sol";
-import {WETHGateway} from "../src/misc/WETHGateway.sol";
+import {Script, console} from "../../lib/forge-std/src/Script.sol";
+import {LendingPoolAddressesProvider} from "../../src/configuration/LendingPoolAddressesProvider.sol";
+import {WETHGateway} from "../../src/misc/WETHGateway.sol";
 
 contract DeployWETHGateway is Script {
     function run() external {
