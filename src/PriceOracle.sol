@@ -5,19 +5,29 @@ import "@redstone-finance/evm-connector/contracts/data-services/RapidDemoConsume
 
 contract PriceOracle is RapidDemoConsumerBase {
     mapping(address => bytes32) public assetToDataFeedId;
+    mapping(address => uint256) private assetPrices;
+
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only owner can call this function");
+        _;
+    }
 
     function getLatestPrice(bytes32 dataFeedId) public view returns (uint256) {
         return getOracleNumericValueFromTxMsg(dataFeedId);
     }
 
-    function setAssetSource(address asset, bytes32 dataFeedId) external {
-        assetToDataFeedId[asset] = dataFeedId;
+    function setAssetPrice(address asset, uint256 value) external onlyOwner {
+        assetPrices[asset] = value;
     }
 
-    function getAssetPrice(address asset) public view virtual returns (uint256) {
-        bytes32 feedId = assetToDataFeedId[asset];
-        require(feedId != bytes32(0), "No data feed for asset");
-        return getOracleNumericValueFromTxMsg(feedId);
+    function getAssetPrice(address asset) public view returns (uint256) {
+        return assetPrices[asset];
     }
 
     function getAssetsPrices(address[] calldata assets) external view returns (uint256[] memory) {
